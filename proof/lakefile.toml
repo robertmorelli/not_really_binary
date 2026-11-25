@@ -1,0 +1,6 @@
+name = "nrb"
+defaultTargets = ["NRB"]
+
+[[lean_lib]]
+name = "NRB"
+precompileModules = true

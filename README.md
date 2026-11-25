@@ -81,6 +81,26 @@ Measured on an 8-core Apple Silicon laptop (November 2026):
 
 For comparison, the A146025 page records a 2015 search of bases 2..5 to about 11 million decimal digits.
 
+## Machine-checked proof (Lean 4)
+
+`proof/` is a Lake project with no dependencies beyond core Lean 4. It formalizes the same interval criterion in natural-number arithmetic, proves the checker sound, and runs it.
+
+| Theorem | Statement |
+|---|---|
+| `ok_iff_dec` | A number has only 0/1 digits in base b exactly when the base-b decoder outputs it |
+| `a5` | a(5) = 82000 |
+| `a6_gt_big` | a(6) ≥ 6^3000, from a search on the low digits |
+| `blocks_sound` | Soundness of the magnitude sweep |
+| `a6_bound` | a(6) ≥ 6^17179872184, about 10^(1.3×10^10) |
+
+```sh
+cd proof
+lake build NRB.Bound          # about 16 minutes on 8 cores
+python3 gen_ranges.py 32      # add more ranges, then build again
+```
+
+The final evaluations use `native_decide`, which trusts the Lean compiler. The Lean checker takes about 0.56 microseconds per length, roughly 1000 times slower than the C scanner, so its verified bound is far below the scanner's computed one. `proof/not_really_binary.typ` (and the PDF) explains what is proved, what is only computed, and why none of it proves that a(6) does not exist.
+
 ## How far to trust the bounds
 
 What has been checked:
