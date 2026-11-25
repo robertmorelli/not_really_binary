@@ -122,18 +122,18 @@ This is the same criterion the C scanner uses, at about 0.56 microseconds per le
 
 = Computed bounds (not machine-verified)
 
-The C program `a258107/scan.c` applies Proposition 6 to each $L$ in turn, using floating point with outward padding and then 192-bit
+The C program `a258107/scan.c` (and its Metal GPU front-end `a258107/gpuscan.m`) applies Proposition 6 to each $L$ in turn, using floating point with outward padding and then 192-bit
 fixed point. Its output so far:
 
 #table(
   columns: 3,
   table.header[*Top base*][*Lengths covered*][*Consequence, if the program is correct*],
-  [6], [$L < 8.9 times 10^12$], [no $a(6)$ below about $10^(6.9 times 10^12)$],
+  [6], [$L < 8.9 times 10^13$], [no $a(6)$ below about $10^(6.9 times 10^13)$],
   [5], [$L < 3 times 10^9$], [no term of A146025 between 82000 and about $10^(2.1 times 10^9)$],
 )
 
-These rest on the correctness of the C code, of the platform's `exp`, and of hand-chosen error margins. The code is tested against brute
-force for small $L$, but there is no formal error analysis. Compare Theorem 7, which is machine-verified and reaches $10^(1.3 times 10^10)$. Extending Theorem 7 to the scanner's range is a matter of compute: about 60 core-days at the current speed.
+These rest on the correctness of the C/GPU code, of the platform's `exp`, and of hand-chosen error margins. The code is tested against brute
+force for small $L$, but there is no formal error analysis. Compare Theorem 7, which is machine-verified and reaches $10^(1.3 times 10^10)$. Extending Theorem 7 to the scanner's range is a matter of compute.
 
 = Heuristic for non-existence
 

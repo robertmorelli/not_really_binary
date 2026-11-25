@@ -1,7 +1,15 @@
+# Built binaries
 a258107/scan4
 a258107/scan5
 a258107/scan6
-state_b*.txt
-candidates_b*.log
+a258107/gpuscan
+a258107/gpuscan_cl
+
+# Runtime state and logs
+state_*.txt
 *.log
+*.tmp
+
+# Python / local scratch
 __pycache__/
+images/

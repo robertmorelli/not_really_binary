@@ -44,7 +44,9 @@ typedef unsigned __int128 u128;
 #define LMAX (1ULL << 56) /* padding analysis assumes L below this */
 #define BLK 4096          /* exact phase refresh interval for the 64-bit adds */
 #define ARC_PAD (1ULL << 24)
+#ifndef BM_BITS
 #define BM_BITS 20
+#endif
 
 static int BASE[NA];
 static double LNB[NA];
