@@ -5,3 +5,9 @@ state_b*.txt
 candidates_b*.log
 *.log
 __pycache__/
+a258107/viz
+a258107/gpuscan
+a258107/metal_bench
+state_gpu_b6.txt
+images/
+a258107/gpuscan_cl
